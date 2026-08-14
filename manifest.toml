@@ -1,0 +1,37 @@
+package_api = 1
+id = "dark-souls-iii"
+name = "DARK SOULS III"
+version = "0.1.0"
+adapter = "adapter.lua"
+platforms = ["windows"]
+
+[game]
+store = "steam"
+steam_app_id = 374320
+process_name = "DarkSoulsIII.exe"
+executable_relative_path = "Game/DarkSoulsIII.exe"
+
+[save]
+known_folder = "roaming_app_data"
+relative_path = "DarkSoulsIII"
+repository_scope = "save_root"
+required_globs = ["*/DS30000.sl2"]
+
+[watch]
+include_globs = ["*/DS30000.sl2"]
+exclude_globs = [".git/**", "GraphicsConfig.xml"]
+
+[git]
+exclude_globs = ["GraphicsConfig.xml", "*.tmp"]
+autocrlf = false
+
+[commit]
+strategy = "hybrid"
+quiet_seconds = 5
+max_interval_seconds = 300
+commit_on_exit = true
+
+[parse]
+format = "bnd4-sl2"
+metadata = ["account_id", "slots", "character_name", "file_size", "modified_time"]
+character_names = true
